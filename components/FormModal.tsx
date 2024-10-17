@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import TeacherForm from "./forms/TeacherForm";
+import StudentForm from "./forms/StudentForm";
 
 const FormModal = ({
   table,
@@ -47,9 +49,9 @@ const FormModal = ({
         </button>
       </form>
     ) : type === "create" || type === "update" ? (
-      // forms[table](type, data)
-      <></>
+      <TeacherForm type={type} data={data} />
     ) : (
+      // <StudentForm type={type} data={data} />
       "Form not found!"
     );
   };
