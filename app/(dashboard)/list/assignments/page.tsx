@@ -1,15 +1,15 @@
 import Pagination from "@/components/Pagination";
 import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
-import { examsData, role } from "@/lib/data";
+import { assignmentsData, role } from "@/lib/data";
 import Image from "next/image";
 
-type Exam = {
+type Assignment = {
   id: number;
   subject: string;
   class: string;
   teacher: string;
-  date: string;
+  dueDate: string;
 };
 
 const columns = [
@@ -27,8 +27,8 @@ const columns = [
     className: "hidden md:table-cell",
   },
   {
-    header: "Date",
-    accessor: "date",
+    header: "Due Date",
+    accessor: "dueDate",
     className: "hidden md:table-cell",
   },
   {
@@ -37,8 +37,8 @@ const columns = [
   },
 ];
 
-const ExamListPage = () => {
-  const renderRow = (item: Exam) => (
+const AssignmentListPage = () => {
+  const renderRow = (item: Assignment) => (
     <tr
       key={item.id}
       className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-laPurpleLight"
@@ -46,7 +46,7 @@ const ExamListPage = () => {
       <td className="flex items-center gap-4 p-4">{item.subject}</td>
       <td>{item.class}</td>
       <td className="hidden md:table-cell">{item.teacher}</td>
-      <td className="hidden md:table-cell">{item.date}</td>
+      <td className="hidden md:table-cell">{item.dueDate}</td>
       <td>
         <div className="flex items-center gap-2">
           {role === "admin" || role === "teacher" ? (
@@ -68,7 +68,9 @@ const ExamListPage = () => {
     <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0">
       {/* TOP */}
       <div className="flex items-center justify-between">
-        <h1 className="hidden md:block text-lg font-semibold">All Exams</h1>
+        <h1 className="hidden md:block text-lg font-semibold">
+          All Assignments
+        </h1>
         <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
           <TableSearch />
           <div className="flex items-center gap-4 self-end">
@@ -87,11 +89,11 @@ const ExamListPage = () => {
         </div>
       </div>
       {/* LIST */}
-      <Table columns={columns} renderRow={renderRow} data={examsData} />
+      <Table columns={columns} renderRow={renderRow} data={assignmentsData} />
       {/* PAGINATION */}
       <Pagination />
     </div>
   );
 };
 
-export default ExamListPage;
+export default AssignmentListPage;
