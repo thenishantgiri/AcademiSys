@@ -1,3 +1,4 @@
+import FormModal from "@/components/FormModal";
 import Pagination from "@/components/Pagination";
 import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
@@ -65,14 +66,10 @@ const ResultListPage = () => {
       <td>
         <div className="flex items-center gap-2">
           {role === "admin" || role === "teacher" ? (
-            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-laPurple">
-              <Image src="/update.png" alt="update" width={16} height={16} />
-            </button>
-          ) : null}
-          {role === "admin" || role === "teacher" ? (
-            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-laPurple">
-              <Image src="/delete.png" alt="delete" width={16} height={16} />
-            </button>
+            <>
+              <FormModal table="result" type="update" data={item} />
+              <FormModal table="result" type="delete" id={item.id} />
+            </>
           ) : null}
         </div>
       </td>
@@ -94,9 +91,7 @@ const ResultListPage = () => {
               <Image src="/sort.png" alt="sort" width={14} height={14} />
             </button>
             {role === "admin" || role === "teacher" ? (
-              <button className="w-8 h-8 flex items-center justify-center rounded-full bg-laYellow">
-                <Image src="/create.png" alt="create" width={14} height={14} />
-              </button>
+              <FormModal table="result" type="create" />
             ) : null}
           </div>
         </div>
