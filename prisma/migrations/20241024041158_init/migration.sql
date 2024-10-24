@@ -8,6 +8,7 @@ CREATE TYPE "Day" AS ENUM ('SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY
 CREATE TABLE "Admin" (
     "id" TEXT NOT NULL,
     "username" TEXT NOT NULL,
+    "name" TEXT,
 
     CONSTRAINT "Admin_pkey" PRIMARY KEY ("id")
 );
